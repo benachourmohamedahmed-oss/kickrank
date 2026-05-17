@@ -1,0 +1,18 @@
+# Backend
+backend/target/
+backend/*.log
+backend/*.err.log
+backend/.env
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/*.log
+frontend/*.err.log
+
+# OS / IDE
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,122 @@
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: end;
+  margin-bottom: 22px;
+}
+
+h1 {
+  margin: 10px 0 0;
+  font-size: 42px;
+}
+
+.notice {
+  border-left: 4px solid var(--danger);
+  padding: 12px 14px;
+  background: #fff;
+  color: var(--danger);
+  font-weight: 800;
+}
+
+.create {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: end;
+  padding: 18px;
+  margin-bottom: 24px;
+}
+
+.form-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  grid-column: 1 / -1;
+  font-size: 18px;
+}
+
+.match-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.match-card {
+  display: grid;
+  gap: 18px;
+  padding: 20px;
+}
+
+.match-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.stats,
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stats span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #fff;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.teams {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.teams div {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  min-height: 120px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #fbfcfb;
+}
+
+.teams span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  padding: 28px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .create,
+  .match-grid {
+    grid-template-columns: 1fr;
+  }
+}

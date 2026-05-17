@@ -1,0 +1,30 @@
+.auth-page {
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - 150px);
+}
+
+.auth-card {
+  display: grid;
+  gap: 18px;
+  width: min(440px, 100%);
+  padding: 28px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.15;
+}
+
+.error {
+  margin: 0;
+  color: var(--danger);
+  font-weight: 700;
+}
+
+a {
+  justify-self: center;
+  color: var(--primary-strong);
+  font-weight: 800;
+}

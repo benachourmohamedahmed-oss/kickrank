@@ -1,0 +1,64 @@
+.page-head {
+  margin-bottom: 22px;
+}
+
+h1 {
+  margin: 10px 0 0;
+  font-size: 42px;
+}
+
+.table {
+  overflow: hidden;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr) auto minmax(150px, 220px);
+  gap: 16px;
+  align-items: center;
+  min-height: 72px;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.rank {
+  font-size: 22px;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  font-weight: 900;
+}
+
+.player span,
+.roles {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.roles {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.empty {
+  padding: 24px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+@media (max-width: 760px) {
+  .row {
+    grid-template-columns: 48px 1fr;
+    padding: 14px;
+  }
+}

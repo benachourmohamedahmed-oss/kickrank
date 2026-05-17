@@ -1,0 +1,99 @@
+<section class="page-head">
+  <div>
+    <span class="badge blue">Match center</span>
+    <h1>Matchs KickRank</h1>
+  </div>
+  <button class="btn secondary" type="button" (click)="load()">
+    <i-lucide [img]="refresh" size="18"></i-lucide>
+    Actualiser
+  </button>
+</section>
+
+@if (error()) {
+  <p class="notice">{{ error() }}</p>
+}
+
+@if (canCreate()) {
+  <form class="create panel" [formGroup]="form" (ngSubmit)="create()">
+    <div class="form-title">
+      <i-lucide [img]="calendar" size="22"></i-lucide>
+      <strong>Creer un match</strong>
+    </div>
+    <label class="field">
+      <span>Titre</span>
+      <input formControlName="title" placeholder="Friday Ranked 7v7">
+    </label>
+    <label class="field">
+      <span>Terrain</span>
+      <input formControlName="location" placeholder="Stade municipal">
+    </label>
+    <label class="field">
+      <span>Date</span>
+      <input type="datetime-local" formControlName="scheduledAt">
+    </label>
+    <label class="field">
+      <span>Type</span>
+      <select formControlName="type">
+        <option value="CASUAL">Casual</option>
+        <option value="RANKED">Ranked</option>
+      </select>
+    </label>
+    <label class="field">
+      <span>Format</span>
+      <select formControlName="format">
+        <option value="FIVE_V_FIVE">5v5</option>
+        <option value="SEVEN_V_SEVEN">7v7</option>
+        <option value="ELEVEN_V_ELEVEN">11v11</option>
+      </select>
+    </label>
+    <label class="field">
+      <span>ID observateur</span>
+      <input formControlName="observerId" placeholder="Obligatoire pour ranked">
+    </label>
+    <button class="btn primary" type="submit" [disabled]="form.invalid">Creer</button>
+  </form>
+}
+
+<section class="match-grid">
+  @for (match of matches(); track match.id) {
+    <article class="match-card panel">
+      <div class="match-top">
+        <div>
+          <h2>{{ match.title }}</h2>
+          <p>{{ match.location }} · {{ match.scheduledAt | date:'medium' }}</p>
+        </div>
+        <span class="badge" [class.gold]="match.type === 'RANKED'">{{ match.type }}</span>
+      </div>
+      <div class="stats">
+        <span><i-lucide [img]="users" size="17"></i-lucide>{{ capacityLabel(match) }}</span>
+        <span><i-lucide [img]="shield" size="17"></i-lucide>{{ match.status }}</span>
+      </div>
+      <div class="teams">
+        <div>
+          <strong>Equipe A</strong>
+          @for (p of match.participants; track p.id) {
+            @if (p.teamCode === 'A') {
+              <span>{{ p.player.fullName }} · {{ p.player.elo }}</span>
+            }
+          }
+        </div>
+        <div>
+          <strong>Equipe B</strong>
+          @for (p of match.participants; track p.id) {
+            @if (p.teamCode === 'B') {
+              <span>{{ p.player.fullName }} · {{ p.player.elo }}</span>
+            }
+          }
+        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn primary" type="button" (click)="join(match)" [disabled]="match.status !== 'WAITING'">Participer</button>
+        @if (canCreate()) {
+          <button class="btn secondary" type="button" (click)="generateTeams(match)">Generer equipes</button>
+        }
+      </div>
+    </article>
+  } @empty {
+    <div class="empty panel">Aucun match pour le moment.</div>
+  }
+</section>

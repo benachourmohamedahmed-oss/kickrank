@@ -1,0 +1,102 @@
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 32px;
+  align-items: center;
+  min-height: 520px;
+}
+
+h1 {
+  margin: 18px 0 14px;
+  font-size: clamp(54px, 9vw, 112px);
+  line-height: 0.92;
+  letter-spacing: 0;
+}
+
+p {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.actions,
+.score-line,
+.metrics {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.scoreboard {
+  padding: 24px;
+}
+
+.pitch-title {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.score-line {
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 0;
+}
+
+.score-line span {
+  font-size: 42px;
+  font-weight: 900;
+}
+
+.pitch {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  min-height: 260px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  padding: 24px;
+  background:
+    linear-gradient(90deg, transparent calc(50% - 1px), rgba(255,255,255,.65) calc(50% - 1px), rgba(255,255,255,.65) calc(50% + 1px), transparent calc(50% + 1px)),
+    #1f7d4f;
+}
+
+.pitch span {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+}
+
+.pitch span:nth-child(even) {
+  background: var(--accent);
+  justify-self: end;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.metrics article {
+  display: grid;
+  gap: 10px;
+  padding: 22px;
+}
+
+.metrics strong {
+  font-size: 18px;
+}
+
+.metrics span {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 860px) {
+  .hero,
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+}

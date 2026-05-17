@@ -1,0 +1,46 @@
+<section class="hero">
+  <div>
+    <span class="badge gold">Football amateur competitif</span>
+    <h1>KickRank</h1>
+    <p>Organisez des matchs, formez des equipes equilibrees par ELO et validez les resultats ranked avec un observateur verifie.</p>
+    <div class="actions">
+      <a class="btn primary" routerLink="/matches">
+        <i-lucide [img]="calendar" size="18"></i-lucide>
+        Voir les matchs
+      </a>
+      <a class="btn secondary" routerLink="/leaderboard">
+        <i-lucide [img]="medal" size="18"></i-lucide>
+        Classement
+      </a>
+    </div>
+  </div>
+  <div class="scoreboard panel">
+    <div class="pitch-title">Ranked Night</div>
+    <div class="score-line">
+      <strong>Team A</strong>
+      <span>4 - 3</span>
+      <strong>Team B</strong>
+    </div>
+    <div class="pitch">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+</section>
+
+<section class="metrics">
+  <article class="panel">
+    <i-lucide [img]="users" size="24"></i-lucide>
+    <strong>Snake draft</strong>
+    <span>Tri par ELO puis repartition automatique A/B.</span>
+  </article>
+  <article class="panel">
+    <i-lucide [img]="shield" size="24"></i-lucide>
+    <strong>Validation fiable</strong>
+    <span>Les matchs ranked exigent un observateur verifie.</span>
+  </article>
+  <article class="panel">
+    <i-lucide [img]="medal" size="24"></i-lucide>
+    <strong>ELO hybride</strong>
+    <span>50% collectif, 50% performance individuelle.</span>
+  </article>
+</section>

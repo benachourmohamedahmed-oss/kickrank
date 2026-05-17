@@ -1,0 +1,20 @@
+<section class="page-head">
+  <span class="badge gold">ELO officiel</span>
+  <h1>Classement joueurs</h1>
+</section>
+
+<section class="panel table">
+  @for (user of users(); track user.id; let index = $index) {
+    <div class="row">
+      <strong class="rank">#{{ index + 1 }}</strong>
+      <div class="player">
+        <i-lucide [img]="medal" size="20"></i-lucide>
+        <span>{{ user.fullName }}</span>
+      </div>
+      <span class="badge gold">{{ user.elo }} ELO</span>
+      <span class="roles">{{ user.roles.join(', ') }}</span>
+    </div>
+  } @empty {
+    <div class="empty">Aucun joueur classe.</div>
+  }
+</section>

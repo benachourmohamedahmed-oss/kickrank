@@ -1,0 +1,30 @@
+<header class="shell-header">
+  <a class="brand" routerLink="/">
+    <i-lucide [img]="trophy" size="24"></i-lucide>
+    <span>KickRank</span>
+  </a>
+  <nav>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
+    <a routerLink="/matches" routerLinkActive="active">Matchs</a>
+    <a routerLink="/leaderboard" routerLinkActive="active">Classement</a>
+    @if (auth.hasRole('ADMIN')) {
+      <a routerLink="/admin" routerLinkActive="active">Admin</a>
+    }
+  </nav>
+  <div class="account">
+    @if (auth.user(); as user) {
+      <span class="badge gold">{{ user.elo }} ELO</span>
+      <span class="identity">{{ user.fullName }}</span>
+      <button class="icon-button" type="button" (click)="auth.logout()" title="Deconnexion">
+        <i-lucide [img]="logoutIcon" size="18"></i-lucide>
+      </button>
+    } @else {
+      <a class="btn secondary" routerLink="/login">Connexion</a>
+      <a class="btn primary" routerLink="/register">Inscription</a>
+    }
+  </div>
+</header>
+
+<main class="shell-main">
+  <router-outlet></router-outlet>
+</main>

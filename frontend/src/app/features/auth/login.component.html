@@ -1,0 +1,19 @@
+<section class="auth-page">
+  <form class="auth-card panel" [formGroup]="form" (ngSubmit)="submit()">
+    <span class="badge blue">Connexion</span>
+    <h1>Retour sur le terrain</h1>
+    <label class="field">
+      <span>Email</span>
+      <input type="email" formControlName="email" autocomplete="email">
+    </label>
+    <label class="field">
+      <span>Mot de passe</span>
+      <input type="password" formControlName="password" autocomplete="current-password">
+    </label>
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+    <button class="btn primary" type="submit" [disabled]="form.invalid">Se connecter</button>
+    <a routerLink="/register">Creer un compte joueur</a>
+  </form>
+</section>

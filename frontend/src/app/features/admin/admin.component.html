@@ -1,0 +1,49 @@
+<section class="page-head">
+  <span class="badge blue">Roles verifies</span>
+  <h1>Administration</h1>
+</section>
+
+<section class="layout">
+  <form class="panel apply" [formGroup]="form" (ngSubmit)="apply()">
+    <div class="title">
+      <i-lucide [img]="shield" size="22"></i-lucide>
+      <strong>Candidature</strong>
+    </div>
+    <label class="field">
+      <span>Role demande</span>
+      <select formControlName="requestedRole">
+        <option value="ORGANIZER">Organisateur</option>
+        <option value="OBSERVER">Observateur</option>
+      </select>
+    </label>
+    <label class="field">
+      <span>Motivation</span>
+      <textarea formControlName="motivation"></textarea>
+    </label>
+    @if (message()) {
+      <p>{{ message() }}</p>
+    }
+    <button class="btn primary" type="submit" [disabled]="form.invalid">Envoyer</button>
+  </form>
+
+  <div class="panel queue">
+    <div class="title">
+      <i-lucide [img]="shield" size="22"></i-lucide>
+      <strong>Candidatures en attente</strong>
+    </div>
+    @for (application of applications(); track application.id) {
+      <article class="application">
+        <div>
+          <strong>{{ application.applicant.fullName }}</strong>
+          <span>{{ application.requestedRole }} · {{ application.applicant.email }}</span>
+        </div>
+        <div class="actions">
+          <button class="btn primary" type="button" (click)="approve(application.id)">Approuver</button>
+          <button class="btn secondary" type="button" (click)="reject(application.id)">Refuser</button>
+        </div>
+      </article>
+    } @empty {
+      <p class="muted">Aucune candidature visible ou vous n'avez pas le role admin.</p>
+    }
+  </div>
+</section>
